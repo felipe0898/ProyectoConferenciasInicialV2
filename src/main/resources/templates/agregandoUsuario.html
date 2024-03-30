@@ -1,0 +1,44 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Agregar o modificar usuarios</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="background-color:#e0e0e0;">
+        <h1 align="center" style="background-color:#11222d;"><font COLOR="white" size=30>Agregar o modificar usuarios</font></h1>
+        <br/>
+        <div align="center" >
+        <form align="center" th:action="@{/guardar}" method="post" th:object="${usuario}">
+            <input type="hidden" name="id_usuario" th:field="*{id_usuario}"
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" th:field="*{nombre}"/>
+            <span th:if="${#fields.hasErrors('nombre')}" th:errores="*{nombre}">Falta Nombre</span>
+             <br/>
+             <br/>
+            <label for="apellido">Apellido:</label>
+            <input type="text" name="apellido" th:field="*{apellido}"/>
+            <span th:if="${#fields.hasErrors('apellido')}" th:errores="*{apellido}">Falta apellido</span>
+            <br/>
+            <br/>
+            <label for="correo">Correo:</label>
+            <input type="text" name="correo" th:field="*{correo}"/>
+            <span th:if="${#fields.hasErrors('correo')}" th:errores="*{correo}">Debe ser un correo valido</span>
+            <br/>
+            <br/>
+            <label for="telefono">Telefono:</label>
+            <input type="text" name="telefono" th:field="*{telefono}"/>
+            <span th:if="${#fields.hasErrors('telefono')}" th:errores="*{telefono}">Falta telefono</span>
+            <br/>
+            <br/>
+            <label for="domicilio">Domicilio:</label>
+            <input type="text" name="domicilio" th:field="*{domicilio}"/>
+            <span th:if="${#fields.hasErrors('domicilio')}" th:errores="*{domicilio}">Falta domicilio</span>
+            <br/>
+            <br/>
+            <input type="submit" name="guardar" value="Guardar"/>
+           
+        </form>
+        </div>
+        <h2 align="center"><a th:href="@{/}">Usuarios Ya registrados</a></h2>
+    </body>
+</html>

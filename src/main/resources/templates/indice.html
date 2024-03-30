@@ -1,0 +1,46 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Pagina Inicio</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="background-color:#e0e0e0;">
+        
+        <h1 align="center" style="background-color:#11222d;"><font COLOR="white" size=30>Usuarios</font></h1>
+        <div th:if="${usuarios != null and !usuarios.empty}" align="center">
+            <table border="2">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo</th>
+                    <th>Telefono</th>
+                    <th>domicilio</th>
+                    <th>Modificar</th>
+                    <th>Eliminar</th>
+                </tr>
+                <tr th:each="usuario : ${usuarios}">
+                    <td th:text="${usuario.nombre}"></td>
+                    <td th:text="${usuario.apellido}"></td>
+                    <td th:text="${usuario.correo}"></td>
+                    <td th:text="${usuario.telefono}"></td>
+                    <td th:text="${usuario.domicilio}"></td>
+                    <td> <a th:href="@{/modificar/} + ${usuario.id_usuario}" th:text="Cambiar"/></td>
+                    <td> <a th:href="@{/borrar/} + ${usuario.id_usuario}" th:text="Eliminar"/></td>
+                <tr/>
+              
+            </table>
+            <h2 align="center"><a th:href="@{/agregarUsuario}"> Agregar Usuario</a></h2>
+            <h2 align="center"><a th:href="@{/sesion}"> Ver sesiones</a></h2>
+            <h2 align="center"><a th:href="@{/asistencia}"> Ver asistencias</a></h2>
+
+        </div>
+        <div th:if="${usuarios == null or usuarios.empty}" align="center">
+             La lista no tiene informacion  
+            <h2 align="center"><a th:href="@{/agregarUsuario}"> Agregar Usuario</a></h2>
+            <h2 align="center"><a th:href="@{/sesion}"> Ver sesiones</a></h2>
+            <h2 align="center"><a th:href="@{/asistencia}"> Ver asistencias</a></h2>
+
+        </div>
+    </body>
+</html>

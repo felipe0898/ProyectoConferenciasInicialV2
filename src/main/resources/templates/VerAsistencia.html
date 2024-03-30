@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Aistencia</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="background-color:#e0e0e0;">
+        
+        <h1 align="center" style="background-color:#11222d;"><font COLOR="white" size=30>Asistencia</font></h1>
+        <div th:if="${asistencias != null and !asistencias.empty}" align="center">
+            <table border="2">
+                <tr>
+                    <th>Usuario</th>
+                    <th>Seccion</th>
+                 
+                   
+                </tr>
+                <tr th:each="asistencia : ${asistencias}">
+                    <td th:text="${asistencia.id_usuario}"></td>
+                    <td th:text="${asistencia.id_sesion}"></td>
+                    
+                   
+                <tr/>
+              
+            </table>
+            <h2 align="center"><a th:href="@{/}"> Ver usuarios</a></h2>
+            <h2 align="center"><a th:href="@{/sesion}"> Ver sesiones</a></h2>
+        </div>
+        <div th:if="${asistencias == null or asistencias.empty}" align="center">
+             La lista no tiene informacion  
+            <h2 align="center"><a th:href="@{/}"> Ver usuarios </a></h2>
+            <h2 align="center"><a th:href="@{/sesion}"> Ver sesiones</a></h2>
+        </div>
+    </body>
+</html>
